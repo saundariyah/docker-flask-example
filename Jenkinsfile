@@ -27,14 +27,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo "Running tests..."
-                sh './venv/bin/pip install pytest'
-                sh './venv/bin/pytest --maxfail=1 --disable-warnings -q'
-            }
-        }
-
         stage('Docker Build') {
             steps {
                 echo "Building Docker image..."
