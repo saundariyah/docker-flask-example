@@ -20,8 +20,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Installing dependencies..."
-                sh 'python3 -m venv venv'
-                sh './venv/bin/pip install -r requirements.txt'
+                sh 'python3 -m pip install --user -r requirements.txt'
+                sh 'python3 -m pip install --user pytest'
+                sh 'python3 -m pytest --maxfail=1 --disable-warnings -q'
+
             }
         }
 
